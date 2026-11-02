@@ -4,11 +4,11 @@ The support desk merged 412 date reports into ticket #4471 and marked it known: 
 queued. Read by tenant, channel and body, the reports come from three problems. Each has its own
 issue here, with how many reports it covers.
 
-| Issue | Problem | Reports |
-|---|---|---|
-| [#1](../../issues/1) | Shared parser reads day-first dates month first | 379 |
-| [#2](../../issues/2) | booking-v3 form hint says MM/DD/YYYY but the form reads day first | 33 |
-| [#3](../../issues/3) | Dates move by one day, differently per time zone | 5 |
+| Issue | Problem | Reports | Outcome |
+|---|---|---|---|
+| [#1](../../issues/1) | Shared parser reads day-first dates month first | 379 | fixed (parse dd/mm for eu locales) |
+| [#2](../../issues/2) | booking-v3 form hint says MM/DD/YYYY but the form reads day first | 33 | won't fix (booking-v3 form retired) |
+| [#3](../../issues/3) | Dates move by one day, differently per time zone | 5 | open |
 
 412 unique reports (the export has 427 rows; 15 are repeats of the same id). Counted as the desk's cause table counts them: the 5 one-day reports are also in the parser count, where the desk files them.
 

@@ -16,11 +16,12 @@ signature: v1.eyJzdWIiOiI0MDkxIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYX
 
 [#4471](/kb/incidents/4471) was merged on subject lines ([decision 0001](/kb/decisions/0001-dedupe-by-subject))
 and marked known: one issue, one fix queued. Read by tenant and by body, its reports come from
-three problems. The queued parser fix closes one of them.
+three problems. Engineering closed #4471 on 5 October: the parser is fixed, the booking-v3 form
+is retired. Neither reaches the one-day moves.
 
 <Callout kind="warn">
-Not one issue. The parser fix does not reach the booking-v3 form hint or the one-day moves.
-Each has its own ticket below.
+Still open: the one-day moves. A day-first parser fix does not move a date by one day, and they
+did not come through the booking-v3 form. Their ticket stays open.
 </Callout>
 
 ## The problems
@@ -29,6 +30,9 @@ Each has its own ticket below.
   parser: 'https://github.com/axinja/mega-what-it-shows/issues/1',
   hint: 'https://github.com/axinja/mega-what-it-shows/issues/2',
   'one-day': 'https://github.com/axinja/mega-what-it-shows/issues/3',
+}} outcomes={{
+  parser: 'fixed: fix(dates): parse dd/mm for eu locales',
+  hint: "won't fix: booking-v3 form retired",
 }} />
 
 - **parser:** the shared parser reads every date month first, and every tenant on file writes the

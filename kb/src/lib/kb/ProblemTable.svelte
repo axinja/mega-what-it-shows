@@ -4,8 +4,9 @@
   import { groupByCause, uniqueById, type Report } from '#lib/kb/causes';
   import { tenantOf } from '#lib/kb/locales';
 
-  // One row per problem in a ticket: the causes from causes.ts, with the desk's one-day moves split out.
-  let { ticket, issues = {} }: { ticket: number; issues?: Record<string, string> } = $props();
+  // One row per problem in a ticket: the causes from causes.ts, plus a row for the desk's one-day moves.
+  // `outcomes`: what engineering decided per problem, as the desk reported it.
+  let { ticket, issues = {}, outcomes = {} }: { ticket: number; issues?: Record<string, string>; outcomes?: Record<string, string> } = $props();
 
   const WHAT: Record<string, string> = {
     parser: 'shared parser reads day-first dates month first: day and month swap',
@@ -49,7 +50,7 @@
 </p>
 
 <table>
-  <thead><tr><th>problem</th><th>reports</th><th>what happens</th><th>tenants</th><th>channels</th><th>seen</th><th>ticket</th></tr></thead>
+  <thead><tr><th>problem</th><th>reports</th><th>what happens</th><th>tenants</th><th>channels</th><th>seen</th><th>outcome</th><th>ticket</th></tr></thead>
   <tbody>
     {#each rows as p (p.problem)}
       <tr>
@@ -59,6 +60,7 @@
         <td>{p.tenants}</td>
         <td>{p.channels}</td>
         <td>{p.seen}</td>
+        <td>{outcomes[p.problem] ?? 'open'}</td>
         <td>{#if issues[p.problem]}<a href={issues[p.problem]}>{issues[p.problem].split('/').slice(-3).join(' ').replace(' issues ', '#')}</a>{:else}none yet{/if}</td>
       </tr>
     {/each}
