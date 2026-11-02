@@ -1,0 +1,29 @@
+# #4471: three problems, not one
+
+The support desk merged 412 date reports into ticket #4471 and marked it known: one issue, one fix
+queued. Read by tenant, channel and body, the reports come from three problems. Each has its own
+issue here, with how many reports it covers.
+
+| Issue | Problem | Reports |
+|---|---|---|
+| [#1](../../issues/1) | Shared parser reads day-first dates month first | 374 |
+| [#2](../../issues/2) | booking-v3 form hint says MM/DD/YYYY but the form reads day first | 33 |
+| [#3](../../issues/3) | Dates move by one day, differently per time zone | 5 |
+
+412 unique reports (the export has 427 rows; 15 are repeats of the same id).
+
+## The kb page
+
+- **Source:** [kb/src/routes/kb/incidents/4471/problems/+page.svx](kb/src/routes/kb/incidents/4471/problems/+page.svx),
+  with its table in [kb/src/lib/kb/ProblemTable.svelte](kb/src/lib/kb/ProblemTable.svelte). Signed `axinja`, desk ref `DR-1E27-PKQT`.
+- **As the desk sees it:** [page/kb/incidents/4471/problems.html](page/kb/incidents/4471/problems.html)
+  (built with SvelteKit + mdsvex) and a screenshot, [page/problems.png](page/problems.png).
+
+## What is here
+
+```
+kb/        the desk's kb export, plus the new page and its component
+render/    the build setup: npm install && npm run build → render/build
+page/      the built kb, as the desk sees it
+issues/    the issue bodies, generated from the export
+```

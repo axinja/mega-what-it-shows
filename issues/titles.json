@@ -1,0 +1,14 @@
+{
+  "parser": {
+    "title": "#4471 · Shared parser reads day-first dates month first (374 reports)",
+    "reports": 374
+  },
+  "hint": {
+    "title": "#4471 · booking-v3 form hint says MM/DD/YYYY but the form reads day first (33 reports)",
+    "reports": 33
+  },
+  "one-day": {
+    "title": "#4471 · Dates move by one day, differently per time zone (5 reports)",
+    "reports": 5
+  }
+}

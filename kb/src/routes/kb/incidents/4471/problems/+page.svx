@@ -1,0 +1,55 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: axinja
+status: open
+reviewed: 2026-11-02
+signature: axinja
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) was merged on subject lines ([decision 0001](/kb/decisions/0001-dedupe-by-subject))
+and marked known: one issue, one fix queued. Read by tenant and by body, its reports come from
+three problems. The queued parser fix closes one of them.
+
+<Callout kind="warn">
+Not one issue. The parser fix does not reach the booking-v3 form hint or the one-day moves.
+Each has its own ticket below.
+</Callout>
+
+## The problems
+
+<ProblemTable ticket={4471} issues={{
+  parser: 'https://github.com/axinja/mega-what-it-shows/issues/1',
+  hint: 'https://github.com/axinja/mega-what-it-shows/issues/2',
+  'one-day': 'https://github.com/axinja/mega-what-it-shows/issues/3',
+}} />
+
+- **parser:** the shared parser reads every date month first, and every tenant on file writes the
+  day first. *7 April* goes out as *4 July*.
+- **hint:** on booking-v3 the form prints `MM/DD/YYYY` under its date field. People type what it
+  says, and the form reads it the tenant's way. Only form reports from booking-v3 tenants.
+- **one-day:** the date moves by one day, in the same month, or two time zones get two different
+  days for one meeting. A month-first parser cannot do that. The desk had already noted these
+  reports as a one-day move (`desk-notes.json`) and left them under `parser`.
+
+## How to tell them apart
+
+Do not use the intake tag: it is a guess from the reporter's browser, and it disagrees with the
+tenant on file for many of these reports (see *tagged as* below). Use the tenant and the channel
+(`causes.ts`), then read the body for a one-day move.
+
+<CauseTable ticket={4471} />
+
+## Lessons
+
+- Merging on subject counts reports, not causes. Check a big ticket's table before you call it known.
+- A note that says "read differently" is a problem until someone proves otherwise.
+
+<RenderStamp {signature} />
