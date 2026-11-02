@@ -15,7 +15,7 @@ issue here, with how many reports it covers.
 ## The kb page
 
 - **Source:** [kb/src/routes/kb/incidents/4471/problems/+page.svx](kb/src/routes/kb/incidents/4471/problems/+page.svx),
-  with its table in [kb/src/lib/kb/ProblemTable.svelte](kb/src/lib/kb/ProblemTable.svelte). Signed `axinja`, desk ref `DR-1E27-PKQT`.
+  with its table in [kb/src/lib/kb/ProblemTable.svelte](kb/src/lib/kb/ProblemTable.svelte). Signed with the course ticket; desk ref shown on the page.
 - **As the desk sees it:** [page/kb/incidents/4471/problems.html](page/kb/incidents/4471/problems.html)
   (built with SvelteKit + mdsvex) and a screenshot, [page/problems.png](page/problems.png).
 
