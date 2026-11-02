@@ -6,11 +6,11 @@ issue here, with how many reports it covers.
 
 | Issue | Problem | Reports |
 |---|---|---|
-| [#1](../../issues/1) | Shared parser reads day-first dates month first | 374 |
+| [#1](../../issues/1) | Shared parser reads day-first dates month first | 379 |
 | [#2](../../issues/2) | booking-v3 form hint says MM/DD/YYYY but the form reads day first | 33 |
 | [#3](../../issues/3) | Dates move by one day, differently per time zone | 5 |
 
-412 unique reports (the export has 427 rows; 15 are repeats of the same id).
+412 unique reports (the export has 427 rows; 15 are repeats of the same id). Counted as the desk's cause table counts them: the 5 one-day reports are also in the parser count, where the desk files them.
 
 ## The kb page
 

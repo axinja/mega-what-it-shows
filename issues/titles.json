@@ -1,7 +1,7 @@
 {
   "parser": {
-    "title": "#4471 · Shared parser reads day-first dates month first (374 reports)",
-    "reports": 374
+    "title": "#4471 · Shared parser reads day-first dates month first (379 reports)",
+    "reports": 379
   },
   "hint": {
     "title": "#4471 · booking-v3 form hint says MM/DD/YYYY but the form reads day first (33 reports)",

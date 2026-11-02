@@ -1,6 +1,6 @@
 **Reports: 5** of the 412 merged into support ticket #4471.
 
-The date moves by exactly one day in the same month, or people in two time zones get two different days for one meeting. A month-first parser cannot cause this; it looks like a date converted through UTC or the wrong time zone. The desk noted these reports as a one-day move (`desk-notes.json`) and left them under the parser.
+The date moves by exactly one day in the same month, or people in two time zones get two different days for one meeting. A month-first parser cannot cause this; it looks like a date converted through UTC or the wrong time zone. The desk noted these reports as a one-day move (`desk-notes.json`) and files them under the parser by tenant and channel, so they are also part of the parser count.
 
 - Tenants (5): alder.physio (de-DE, booking-v3), kettle.books (nl-NL, booking-v2), lantern.row (cs-CZ, booking-v2), nine.lanterns (pl-PL, booking-v2), pale.harbour (pt-PT, booking-v3)
 - Channels: app, email

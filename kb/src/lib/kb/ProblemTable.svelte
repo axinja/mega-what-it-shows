@@ -18,7 +18,8 @@
   const moved = $derived(merged.filter((r) => notes.oneDayMove.includes(r.id)));
   const rows = $derived(
     [
-      ...groupByCause(merged.filter((r) => !notes.oneDayMove.includes(r.id)), tenantOf).map((g) => ({
+      // Causes counted as CauseTable counts them; one-day moves stay under their cause and get a row too.
+      ...groupByCause(merged, tenantOf).map((g) => ({
         problem: g.cause as string,
         reports: g.reports,
       })),
@@ -36,12 +37,15 @@
       })
       .sort((a, b) => b.reports.length - a.reports.length),
   );
-  const total = $derived(rows.reduce((n, p) => n + p.reports.length, 0));
+  const filedUnder = $derived(
+    groupByCause(moved, tenantOf)
+      .map((g) => `${g.reports.length} under ${g.cause}`)
+      .join(', '),
+  );
 </script>
 
 <p class="sum">
-  <strong>{merged.length}</strong> reports merged into #{ticket} · <strong>{rows.length}</strong> problems ·
-  {total === merged.length ? 'every report placed once' : `${merged.length - total} not placed`}
+  <strong>{merged.length}</strong> reports merged into #{ticket} · <strong>{rows.length}</strong> problems
 </p>
 
 <table>
@@ -61,6 +65,11 @@
   </tbody>
 </table>
 
+{#if moved.length}
+  <p class="note">The {moved.length} one-day reports are also counted under their cause, where the desk files them by tenant ({filedUnder}).</p>
+{/if}
+
 <style>
   .sum { font-size: 1.1rem; }
+  .note { color: var(--muted); font-size: 0.85em; }
 </style>
